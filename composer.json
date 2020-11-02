@@ -1,0 +1,19 @@
+{
+    "name": "tkouleris/web-word-counter",
+    "description": "Counts the words of a web page",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tkouleris",
+            "email": "kurokokoro@windowslive.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "tkouleris\\WebWordCounter\\": "src/"
+        }
+    }
+}
