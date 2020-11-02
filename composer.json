@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "symfony/dom-crawler": "5.x-dev"
+    },
     "autoload": {
         "psr-4": {
             "tkouleris\\WebWordCounter\\": "src/"
