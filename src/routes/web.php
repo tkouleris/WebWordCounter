@@ -30,6 +30,17 @@ Route::get('wordcounter',function (){
         $clean_up_array[] = $item;
 
     }
-    dd($clean_up_array);
+    $stats = [];
+    foreach ($clean_up_array as $word)
+    {
+        if(isset($stats[$word])){
+            $stats[$word]++;
+        }else{
+            $stats[$word] = 1;
+        }
+
+    }
+    arsort($stats);
+    dd($stats);
     return 'word counter';
 });
