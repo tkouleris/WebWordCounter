@@ -10,8 +10,7 @@ Route::get('wordcounter',function (){
     $webCrawler = new WebCrawler();
     $text = $webCrawler->getText('http://tkouleris.eu/');
     $wordCounter = new WordCounter();
-    $clean_up_array = $wordCounter->textToArray($text);
-    $stats = $wordCounter->arrayWordCounter($clean_up_array);
+    $stats = $wordCounter->textWordCounter($text);
 
     dd($stats);
     return 'word counter';

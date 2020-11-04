@@ -10,9 +10,9 @@ class WebCrawler
 {
     protected $crawler;
 
+
     /**
      * WebCrawler constructor.
-     * @param $crawler
      */
     public function __construct()
     {
@@ -24,19 +24,24 @@ class WebCrawler
     {
         $html = file_get_contents($url);
 
-
         $this->crawler->add($html);
         $this->removeScriptTag();
         $text = "";
         foreach ($this->crawler as $domElement) {
             $text = $domElement->nodeValue;
         }
+
         return $text;
     }
 
     private function removeScriptTag(): void
     {
         $this->crawler->filter('script')->each(function (Crawler $crawler) {
+            foreach ($crawler as $node) {
+                $node->parentNode->removeChild($node);
+            }
+        });
+        $this->crawler->filter('style')->each(function (Crawler $crawler) {
             foreach ($crawler as $node) {
                 $node->parentNode->removeChild($node);
             }
