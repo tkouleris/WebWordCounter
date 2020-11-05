@@ -8,6 +8,9 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class WebCrawler
 {
+    /**
+     * @var Crawler
+     */
     protected $crawler;
 
     /**
@@ -20,6 +23,8 @@ class WebCrawler
 
 
     /**
+     * Gets a url and returns the text of the page
+     *
      * @param string $url
      * @return string
      */
@@ -37,6 +42,12 @@ class WebCrawler
         return $text;
     }
 
+    /**
+     * Filters out from crawler object the script and style
+     * blocks of code
+     *
+     * @return void
+     */
     private function removeScriptTag(): void
     {
         $this->crawler->filter('script')->each(function (Crawler $crawler) {

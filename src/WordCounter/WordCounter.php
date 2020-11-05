@@ -6,7 +6,37 @@ namespace tkouleris\WebWordCounter\WordCounter;
 
 class WordCounter
 {
+
     /**
+     * Given a text it returns the unique words that are found and
+     * the number of times that occur in the text. The first element
+     * of the array is the total words found in the given text.
+     *
+     * @param $text
+     * @return array
+     */
+    public function textWordCounter($text):array
+    {
+        $words = $this->textToArray($text);
+        $stats = [];
+        foreach ($words as $word)
+        {
+            if(isset($stats[$word])){
+                $stats[$word]++;
+            }else{
+                $stats[$word] = 1;
+            }
+        }
+        $stats['total_words'] = count($words);
+        arsort($stats);
+
+        return $stats;
+    }
+
+    /**
+     * Gets a text and returns an array with all
+     * the words of the given text
+     *
      * @param string $text
      * @return array
      */
@@ -25,24 +55,6 @@ class WordCounter
             $clean_up_array[] = $item;
         }
         return $clean_up_array;
-    }
-
-    public function textWordCounter($text):array
-    {
-        $words = $this->textToArray($text);
-        $stats = [];
-        foreach ($words as $word)
-        {
-            if(isset($stats[$word])){
-                $stats[$word]++;
-            }else{
-                $stats[$word] = 1;
-            }
-        }
-        $stats['total_words'] = count($words);
-        arsort($stats);
-
-        return $stats;
     }
 
     /**
