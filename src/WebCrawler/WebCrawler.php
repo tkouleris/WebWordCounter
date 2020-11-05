@@ -10,7 +10,6 @@ class WebCrawler
 {
     protected $crawler;
 
-
     /**
      * WebCrawler constructor.
      */
@@ -20,6 +19,10 @@ class WebCrawler
     }
 
 
+    /**
+     * @param string $url
+     * @return string
+     */
     public function getText(string $url):string
     {
         $html = file_get_contents($url);

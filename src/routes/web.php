@@ -1,7 +1,6 @@
 <?php
 
 
-use Symfony\Component\DomCrawler\Crawler;
 use tkouleris\WebWordCounter\WebCrawler\WebCrawler;
 use tkouleris\WebWordCounter\WordCounter\WordCounter;
 
