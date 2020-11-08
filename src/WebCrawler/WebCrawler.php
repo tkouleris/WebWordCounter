@@ -4,6 +4,7 @@
 namespace tkouleris\WebWordCounter\WebCrawler;
 
 
+use ErrorException;
 use Symfony\Component\DomCrawler\Crawler;
 
 class WebCrawler
@@ -30,7 +31,12 @@ class WebCrawler
      */
     public function getText(string $url):string
     {
-        $html = file_get_contents($url);
+        try {
+            $html = file_get_contents($url);
+        }catch (\ErrorException $e){
+            throw new ErrorException("The URL doesn't exist. Please insert existing URL.");
+        }
+
 
         $this->crawler->add($html);
         $this->removeScriptTag();

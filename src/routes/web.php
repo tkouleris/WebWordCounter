@@ -1,16 +1,5 @@
 <?php
 
+use tkouleris\WebWordCounter\Http\Controllers\WebWordCounterController;
 
-use tkouleris\WebWordCounter\WebCrawler\WebCrawler;
-use tkouleris\WebWordCounter\WordCounter\WordCounter;
-
-Route::get('wordcounter',function (){
-
-    $webCrawler = new WebCrawler();
-    $text = $webCrawler->getText('http://tkouleris.eu/');
-    $wordCounter = new WordCounter();
-    $stats = $wordCounter->textWordCounter($text);
-
-    dd($stats);
-    return 'word counter';
-});
+Route::get('webwordcounter',[WebWordCounterController::class,'index']);
